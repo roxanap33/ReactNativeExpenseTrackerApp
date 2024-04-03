@@ -9,17 +9,23 @@ import ManageExpenses from "../screens/ManageExpenses";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
+function BottomTabsNavigator() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="RecentExpenses" component={RecentExpenses} />
+      <Tab.Screen name="AllExpenses" component={AllExpenses} />
+    </Tab.Navigator>
+  );
+}
+
 export default function AppNavigator() {
   return (
     <>
       <StatusBar style="auto" />
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="BottomTabs" component={BottomTabsNavigator} />
           <Stack.Screen name="ManageExpense" component={ManageExpenses} />
-          <Tab.Navigator>
-            <Tab.Screen name="RecentExpenses" component={RecentExpenses} />
-            <Tab.Screen name="AllExpenses" component={AllExpenses} />
-          </Tab.Navigator>
         </Stack.Navigator>
       </NavigationContainer>
     </>
